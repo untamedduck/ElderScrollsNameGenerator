@@ -11,11 +11,35 @@ import WoodElf from "../elderScrollsPhotos/WoodElf.png"
 
 export const raceList = [
     {
+        image : HighElf,
+        key:"1",
+        link: "/Altmer",
+
+
+    },
+    {
         image : Argonian,
+        link:"/Argonian"
+
+    },
+    {
+        image : WoodElf,
+
 
     },
     {
         image : Breton,
+
+
+    },
+
+    {
+        image : DarkElf,
+
+
+    },
+    {
+        image : Imperial,
 
 
     },
@@ -24,16 +48,7 @@ export const raceList = [
 
 
     },
-    {
-        image : DarkElf,
 
-
-    },
-    {
-        image : HighElf,
-
-
-    },
     {
         image : Nord,
 
@@ -49,14 +64,5 @@ export const raceList = [
 
 
     },
-    {
-        image : WoodElf,
 
-
-    },
-    {
-        image : Imperial,
-
-
-    },
 ]
