@@ -11,7 +11,7 @@ function Navbar(props) {
     }
 
     return (
-        <div className = "flex justify-between items-center h-24 mx-auto px-4 text-[#DDD8AB] bg-[#122223]">
+        <div className = "flex justify-between items-center h-24 mx-auto px-4 text-[#d7b15b] bg-[#]">
             <div className = "flex shrink-0] ">
                 <img className="h-40 w-40 flex-auto mt-8 " src={BannerImage} alt="Randomizer"/>
             </div>
@@ -25,7 +25,7 @@ function Navbar(props) {
                 {!nav ? <AiOutlineClose size = {20}/> : <AiOutlineMenu size={20}/>}
             </div>
             <div className= "absolute inset-y-0 left-0 z-10">
-                <div className={!nav ? "fixed left-0 top-0  h-full w-[80%] border-r border-r-gray-900 bg-green-900 " +
+                <div className={!nav ? "fixed left-0 top-0  h-full w-[80%] border-r border-r-gray-900 bg-[#1c181b] " +
                     "ease-in-out duration-500" : "fixed left-[-100%] " }>  {/* Color of mobile menu*/}
                  <img className="h-40 w-40 pi-5" src={BannerImage} alt="Randomizer"/>
                   <ul className= "uppercase p-2">
