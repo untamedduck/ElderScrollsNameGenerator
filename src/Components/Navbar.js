@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import BannerImage from "../Pictures/Name generator-logos_white.png"
 import{AiOutlineMenu,AiOutlineClose} from "react-icons/ai"
-
+import {Link} from "react-router-dom"
 
 function Navbar(props) {
     const [nav, setNav]=useState(true)
@@ -16,7 +16,9 @@ function Navbar(props) {
                 <img className="h-40 w-40 flex-auto mt-8 " src={BannerImage} alt="Randomizer"/>
             </div>
             <ul className= "hidden md:flex">
+                <Link to = "/">
                 <li className = "p-4"> Home </li>
+                </Link>
                 <li className = "p-4"> Generators </li>
                 <li className = "p-4"> About </li>
                 <li className = "p-4"> Contact us </li>

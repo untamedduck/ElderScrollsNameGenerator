@@ -4,7 +4,7 @@ import Radio from "../Components/Radio";
 
 function Altmer(props) {
     return (
-        <div>
+        <div >
         <div className = "display: flex h-auto w-full relative z-0 justify-center lg:w-3/4">
             <div className = "display:flex w-1/2 display:flex w-auto h-auto pl-80 pt-16 hidden lg:block">
                  <img className = "object-cover shadow-md shadow-gray-500 rounded-lg object-fill
@@ -19,9 +19,9 @@ function Altmer(props) {
                     Altmer being old and a 300-year-old Altmer being very, very old. </p>
             </div>
         </div>
-           <div className = "display: grid h-auto w-full relative z-0 justify-center lg:w-2/4 mt-4">
-               <button className="bg-[#d7b15b] text-[#1c181b] font-bold py-2 px-4 border-b-4
-                 rounded font-Rubik"> Generate names </button>
+           <div className = "display: grid h-auto w-full relative z-0 justify-center lg:w-1/4 mt-4 lg:ml-64 lg:pl-10">
+               <button className="bg-[#d7b15b] text-[#1c181b] font-bold py-2 px-4
+                 rounded font-Rubik lg:w-56 h-14 w-full hover:bg-[#ded2ae] transform transition duration-500 hover:scale-105 "> Generate names </button>
                <div className="mt-4">
                     <Radio/>
                </div>
