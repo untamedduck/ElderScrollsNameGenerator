@@ -13,19 +13,18 @@ function Altmer(props) {
         setGender(newGender);
     }
 
-    const [altName,setAltName]=useState(getRandom());
+    const [names,setAltName]=useState([]);
     let handleClick
     if(gender === "Male")
     {
         handleClick = () => {
-            const randoName = getRandom();
-            setAltName(randoName);
+            setAltName(getRandom())
+
         }
     }
     else if (gender ==="Female"){
         handleClick = () => {
-            const randoName = getRandomF();
-            setAltName(randoName);
+            setAltName(getRandomF())
         }
     }
 
@@ -60,11 +59,8 @@ function Altmer(props) {
 
                <div className="text-[white] font-Rubik
             self-center w-full h-auto lg:pl-16 lg:w-1/2 mt-16 lg:mt-0 lg:p-4 ">
-                   <p className= "border"> {altName}</p>
-                   <p className= "border"> {altName}</p>
-                   <p className= "border"> {}</p>
                    <p className= "border"> {gender}</p>
-                   <p className= "border"> first last</p>
+                   <p className = "border">{names.map((name,i)=>(<div key={i}>{name}</div>))}</p>
 
 
 
