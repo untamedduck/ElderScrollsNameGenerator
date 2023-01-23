@@ -3,7 +3,7 @@ import React, { useState } from "react";
 
 import HighElf from "../elderScrollsPhotos/HighElf.png"
 import Radio from "../Components/Radio";
-import {getRandom, getRandomF} from "../arrayHold/HEnames";
+import {getRandom, getRandomF, getRandomL} from "../arrayHold/HEnames";
 
 
 
@@ -58,9 +58,8 @@ function Altmer(props) {
                 </div>
 
                <div className="text-[white] font-Rubik
-            self-center w-full h-auto lg:pl-16 lg:w-1/2 mt-16 lg:mt-0 lg:p-4 ">
-                   <p className= "border"> {gender}</p>
-                   <p className = "border">{names.map((name,i)=>(<div key={i}>{name}</div>))}</p>
+            self-center w-full h-auto lg:pl-16 lg:w-1/2 mt-4 lg:mt-0 lg:p-4 ">
+                   <p className = "justify-center md:text-3xl lg:text-2xl font-bold text-lg text-[#d7b15b] w-auto pl-4 lg:pl-0">{names.map((name,i)=>(<div className="border" key={i}>{name}</div>))}</p>
 
 
 
