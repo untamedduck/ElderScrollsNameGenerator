@@ -43,17 +43,20 @@ export const raceList = [
     },
     {
         image : Imperial,
+        link : "/Imperial"
 
 
     },
     {
         image : Cat,
+        link : "/Khajiit"
 
 
     },
 
     {
         image : Nord,
+        link: "/Nord"
 
 
     },

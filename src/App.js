@@ -8,6 +8,9 @@ import Radio from "./Components/Radio";
 import Bosmer from "./Pages/Bosmer";
 import Breton from "./Pages/Breton";
 import Dunmer from "./Pages/Dunmer";
+import Imperial from "./Pages/Imperial";
+import Khajiit from "./Pages/Khajiit"
+import Nord from "./Pages/Nord"
 function App() {
   return (
     <div className= "App">
@@ -20,6 +23,9 @@ function App() {
           <Route path = "/Bosmer" exact element = {<Bosmer/>}/>
           <Route path = "/Breton" exact element = {<Breton/>}/>
           <Route path = "/Dunmer" exact element = {<Dunmer/>}/>
+          <Route path = "/Imperial" exact element = {<Imperial/>}/>
+          <Route path = "/Khajiit" exact element = {<Khajiit/>}/>
+          <Route path = "/Nord" exact element = {<Nord/>}/>
 
 
       </Routes>
