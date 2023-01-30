@@ -11,6 +11,8 @@ import Dunmer from "./Pages/Dunmer";
 import Imperial from "./Pages/Imperial";
 import Khajiit from "./Pages/Khajiit"
 import Nord from "./Pages/Nord"
+import Orc from "./Pages/Orc";
+import Redguard from "./Pages/Redguard";
 function App() {
   return (
     <div className= "App">
@@ -25,7 +27,9 @@ function App() {
           <Route path = "/Dunmer" exact element = {<Dunmer/>}/>
           <Route path = "/Imperial" exact element = {<Imperial/>}/>
           <Route path = "/Khajiit" exact element = {<Khajiit/>}/>
-          <Route path = "/Nord" exact element = {<Nord/>}/>
+          <Route path = "/Nord" exact element = {<Nord/>}/>\
+          <Route path = "/Orc" exact element = {<Orc/>}/>
+          <Route path = "/Redguard" exact element = {<Redguard/>}/>
 
 
       </Routes>

@@ -62,11 +62,13 @@ export const raceList = [
     },
     {
         image : Orc,
+        link: "/Orc"
 
 
     },
     {
         image : redguard,
+        link:"/Redguard"
 
 
     },
