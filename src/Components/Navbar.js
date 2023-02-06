@@ -19,11 +19,11 @@ function Navbar(props) {
                 <Link to = "/">
                 <li className = "p-4"> Home </li>
                 </Link>
-                <li className = "p-4"> Generators </li>
-                <li className = "p-4"> About </li>
-                <li className = "p-4"> Contact us </li>
+                <li className = "p-4 invisible"> Generators </li>
+                <li className = "p-4 invisible"> About </li>
+                <li className = "p-4 invisible"> Contact us </li>
             </ul>
-            <div onClick={handleNav} className = "block md:hidden ">
+            <div onClick={handleNav} className = "block md:hidden cursor-pointer">
                 {!nav ? <AiOutlineClose size = {20}/> : <AiOutlineMenu size={20}/>}
             </div>
             <div className= "absolute inset-y-0 left-0 z-10">
@@ -34,9 +34,9 @@ function Navbar(props) {
                       <Link to = "/" >
                         <li className = "p-4 border-b border-gray-600"> Home </li>
                       </Link>
-                        <li className = "p-4 border-b border-gray-600"> Generators </li>
-                        <li className = "p-4 border-b border-gray-600"> About </li>
-                        <li className = "p-4"> Contact us </li>
+                        <li className = "p-4 border-b  invisible"> Generators </li>
+                        <li className = "p-4 border-b border-gray-600 invisible"> About </li>
+                        <li className = "p-4 invisible"> Contact us </li>
                  </ul>
                 </div>
             </div>
