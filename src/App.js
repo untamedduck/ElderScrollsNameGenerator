@@ -19,7 +19,7 @@ function App() {
       <Router>
       <Navbar/>
       <Routes>
-          <Route path = "/NameGenerator" exact element = {<ElderScrolls/>}/>
+          <Route path = "/NameGenerator/" exact element = {<ElderScrolls/>}/>
           <Route path = "/Altmer" exact element = {<Altmer/>}/>
           <Route path = "/Argonian" exact element = {<Argonian/>}/>
           <Route path = "/Bosmer" exact element = {<Bosmer/>}/>
