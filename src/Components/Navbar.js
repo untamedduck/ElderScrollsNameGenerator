@@ -16,7 +16,7 @@ function Navbar(props) {
                 <img className="h-40 w-40 flex-auto mt-8 " src={BannerImage} alt="Randomizer"/>
             </div>
             <ul className= "hidden md:flex">
-                <Link to = "/">
+                <Link to = "/NameGenerator/">
                 <li className = "p-4"> Home </li>
                 </Link>
                 <li className = "p-4 invisible"> Generators </li>
@@ -31,7 +31,7 @@ function Navbar(props) {
                     "ease-in-out duration-500" : "fixed left-[-100%] " }>  {/* Color of mobile menu*/}
                  <img className="h-40 w-40 pi-5" src={BannerImage} alt="Randomizer"/>
                   <ul className= "uppercase p-2">
-                      <Link to = "/" >
+                      <Link to = "/NameGenerator/" >
                         <li className = "p-4 border-b border-gray-600"> Home </li>
                       </Link>
                         <li className = "p-4 border-b  invisible"> Generators </li>
