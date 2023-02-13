@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import dunmer from "../elderScrollsPhotos/DarkElf.png"
 import Radio from "../Components/Radio";
 import {getRandom, getRandomF,} from "../arrayHold/DunmerNames";
@@ -22,6 +22,10 @@ function Dunmer(props) {
                 setAltName(getRandomF())
             }
         }
+    useEffect(() => {
+        window.scroll({ top: document.body.scrollHeight, behavior: 'smooth' });
+    }, [names]);
+
 
         return (
             <div >

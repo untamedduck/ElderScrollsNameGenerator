@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import breton from "../elderScrollsPhotos/Breton.png"
 import Radio from "../Components/Radio";
 import {getRandom, getRandomF,} from "../arrayHold/BretonNams";
@@ -24,6 +24,11 @@ function Breton(props) {
             setAltName(getRandomF())
         }
     }
+
+    useEffect(() => {
+        window.scroll({ top: document.body.scrollHeight, behavior: 'smooth' });
+    }, [names]);
+
     return (
         <div >
             <div className = "flex w-full relative z-0 justify-center lg:w-auto">

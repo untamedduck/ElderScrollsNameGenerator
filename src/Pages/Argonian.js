@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import argonian from "../elderScrollsPhotos/Argonian.png"
 import Radio from "../Components/Radio";
 import {getRandom, getRandomFA} from "../arrayHold/ArgNames";
@@ -25,6 +25,10 @@ function Argonian(props) {
             setAltName(getRandomFA())
         }
     }
+
+    useEffect(() => {
+        window.scroll({ top: document.body.scrollHeight, behavior: 'smooth' });
+    }, [names]);
 
 
 

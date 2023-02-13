@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 function ElderScrolls() {
     return (
         <div className = "display: flex flex-col h-auto w-full justify-center relative z-0">
-            <div className= "display:flex self-center w-auto lg:w-1/2 mt-16 pl-8">
+            <div className= "display:flex self-center w-auto lg:w-1/2 mt-16 pl-8 pr-8">
                 <h1 className="display-flex: text-[#d7b15b] text-2xl md:text-2xl lg:text-4xl font-Rubik font-bold">Elder Scrolls Name Generator</h1>
                 <p className = "text-[white] font-Rubik text-base md:text-lg lg:text-lg pt-3">Starting up a new game and need a name for your brand new adventure?
                     look no further, this Elder-Scrolls name generator has got you covered, just select the race you're playing from below.</p>

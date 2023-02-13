@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import bosmer from "../elderScrollsPhotos/WoodElf.png"
 import Radio from "../Components/Radio";
 import {getRandom, getRandomF,} from "../arrayHold/bosmerNames";
@@ -25,6 +25,10 @@ function Bosmer(props) {
             setAltName(getRandomF())
         }
     }
+
+    useEffect(() => {
+        window.scroll({ top: document.body.scrollHeight, behavior: 'smooth' });
+    }, [names]);
 
 
 

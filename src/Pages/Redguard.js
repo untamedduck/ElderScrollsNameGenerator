@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import redguard from "../elderScrollsPhotos/redguard.png"
 import Radio from "../Components/Radio";
 import {getRandom, getRandomF,} from "../arrayHold/RedguardNames";
@@ -24,6 +24,9 @@ function Redguard(props) {
             setAltName(getRandomF())
         }
     }
+    useEffect(() => {
+        window.scroll({ top: document.body.scrollHeight, behavior: 'smooth' });
+    }, [names]);
     return (
         <div >
             <div className = "flex w-full relative z-0 justify-center lg:w-auto">
