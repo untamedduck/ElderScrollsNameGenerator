@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/NameGenerator/static/css/main.38ce2fe7.css",
-    "main.js": "/NameGenerator/static/js/main.0e9daefb.js",
-    "static/media/Orc.png": "/NameGenerator/static/media/Orc.1286d1eb2710581d1aa0.png",
-    "static/media/Cat.png": "/NameGenerator/static/media/Cat.5658aac5a53354855b0b.png",
-    "static/media/Argonian.png": "/NameGenerator/static/media/Argonian.cbae5ae247f0f392f2c4.png",
-    "static/media/redguard.png": "/NameGenerator/static/media/redguard.82e508f025eea98d170e.png",
-    "static/media/HighElf.png": "/NameGenerator/static/media/HighElf.2177dd1a8572b2e5bf03.png",
-    "static/media/Nord.png": "/NameGenerator/static/media/Nord.c6925eb44629eb8773ef.png",
-    "static/media/DarkElf.png": "/NameGenerator/static/media/DarkElf.914735c43b1b80ab8349.png",
-    "static/media/Imperial.png": "/NameGenerator/static/media/Imperial.83424a8b133abb464b7f.png",
-    "static/media/WoodElf.png": "/NameGenerator/static/media/WoodElf.f6be9c739f0798178348.png",
-    "static/media/Breton.png": "/NameGenerator/static/media/Breton.a817ac1afac728fb0a8c.png",
-    "static/media/logo-color.png": "/NameGenerator/static/media/logo-color.1512e41439a1f58b89d2.png",
-    "index.html": "/NameGenerator/index.html",
-    "main.38ce2fe7.css.map": "/NameGenerator/static/css/main.38ce2fe7.css.map",
-    "main.0e9daefb.js.map": "/NameGenerator/static/js/main.0e9daefb.js.map"
+    "main.css": "/ElderScrollsNameGenerator/static/css/main.38ce2fe7.css",
+    "main.js": "/ElderScrollsNameGenerator/static/js/main.0406c657.js",
+    "static/media/Orc.png": "/ElderScrollsNameGenerator/static/media/Orc.1286d1eb2710581d1aa0.png",
+    "static/media/Cat.png": "/ElderScrollsNameGenerator/static/media/Cat.5658aac5a53354855b0b.png",
+    "static/media/Argonian.png": "/ElderScrollsNameGenerator/static/media/Argonian.cbae5ae247f0f392f2c4.png",
+    "static/media/redguard.png": "/ElderScrollsNameGenerator/static/media/redguard.82e508f025eea98d170e.png",
+    "static/media/HighElf.png": "/ElderScrollsNameGenerator/static/media/HighElf.2177dd1a8572b2e5bf03.png",
+    "static/media/Nord.png": "/ElderScrollsNameGenerator/static/media/Nord.c6925eb44629eb8773ef.png",
+    "static/media/DarkElf.png": "/ElderScrollsNameGenerator/static/media/DarkElf.914735c43b1b80ab8349.png",
+    "static/media/Imperial.png": "/ElderScrollsNameGenerator/static/media/Imperial.83424a8b133abb464b7f.png",
+    "static/media/WoodElf.png": "/ElderScrollsNameGenerator/static/media/WoodElf.f6be9c739f0798178348.png",
+    "static/media/Breton.png": "/ElderScrollsNameGenerator/static/media/Breton.a817ac1afac728fb0a8c.png",
+    "static/media/logo-color.png": "/ElderScrollsNameGenerator/static/media/logo-color.1512e41439a1f58b89d2.png",
+    "index.html": "/ElderScrollsNameGenerator/index.html",
+    "main.38ce2fe7.css.map": "/ElderScrollsNameGenerator/static/css/main.38ce2fe7.css.map",
+    "main.0406c657.js.map": "/ElderScrollsNameGenerator/static/js/main.0406c657.js.map"
   },
   "entrypoints": [
     "static/css/main.38ce2fe7.css",
-    "static/js/main.0e9daefb.js"
+    "static/js/main.0406c657.js"
   ]
 }
