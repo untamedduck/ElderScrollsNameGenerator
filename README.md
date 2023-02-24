@@ -1,4 +1,4 @@
-Deployed at - https://untamedduck.github.io/NameGenerator/
+Deployed at - https://untamedduck.github.io/ElderScrollsNameGenerator/
 
 Created with ReactJS and TailwindCSS
 
