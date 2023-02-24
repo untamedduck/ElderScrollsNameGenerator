@@ -30,8 +30,6 @@ function App() {
           <Route path = "/Nord" exact element = {<Nord/>}/>\
           <Route path = "/Orc" exact element = {<Orc/>}/>
           <Route path = "/Redguard" exact element = {<Redguard/>}/>
-
-
       </Routes>
       </Router>
     </div>
