@@ -41,7 +41,7 @@ function Khajiit(props) {
                     <h1 className= "justify-center text-3xl md:text-3xl lg:text-4xl font-bold text-lg w-3/4 text-[#d7b15b]"> Khajiit Character Name Generator</h1>
                     <p className = "pt-6  text-base md:text-lg lg:text-lg" >Khajiit are cat-like people who come from Elsweyr, known for high
                         intelligence and agility. These traits make them very good thieves and acrobats, but Khajiit are also fearsome warriors. They are rarely known to be mages.
-                        Khajiit mostly stay on land, but piracy does draw some to work as sailors.[3]  </p>
+                        Khajiit mostly stay on land, but piracy does draw some to work as sailors. </p>
                 </div>
             </div>
             <div className= "flex w-full relative z-0 justify-center lg:w-auto flex-wrap">
