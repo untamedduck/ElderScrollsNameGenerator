@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/ElderScrollsNameGenerator/static/css/main.38ce2fe7.css",
-    "main.js": "/ElderScrollsNameGenerator/static/js/main.0406c657.js",
+    "main.js": "/ElderScrollsNameGenerator/static/js/main.4ec2eebe.js",
     "static/media/Orc.png": "/ElderScrollsNameGenerator/static/media/Orc.1286d1eb2710581d1aa0.png",
     "static/media/Cat.png": "/ElderScrollsNameGenerator/static/media/Cat.5658aac5a53354855b0b.png",
     "static/media/Argonian.png": "/ElderScrollsNameGenerator/static/media/Argonian.cbae5ae247f0f392f2c4.png",
@@ -15,10 +15,10 @@
     "static/media/logo-color.png": "/ElderScrollsNameGenerator/static/media/logo-color.1512e41439a1f58b89d2.png",
     "index.html": "/ElderScrollsNameGenerator/index.html",
     "main.38ce2fe7.css.map": "/ElderScrollsNameGenerator/static/css/main.38ce2fe7.css.map",
-    "main.0406c657.js.map": "/ElderScrollsNameGenerator/static/js/main.0406c657.js.map"
+    "main.4ec2eebe.js.map": "/ElderScrollsNameGenerator/static/js/main.4ec2eebe.js.map"
   },
   "entrypoints": [
     "static/css/main.38ce2fe7.css",
-    "static/js/main.0406c657.js"
+    "static/js/main.4ec2eebe.js"
   ]
 }
