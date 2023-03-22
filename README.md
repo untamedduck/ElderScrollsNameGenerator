@@ -2,7 +2,7 @@ Deployed at - https://untamedduck.github.io/ElderScrollsNameGenerator/
 
 Created with ReactJS and TailwindCSS
 
-COMPLETED: ~~Currently refactoring for better readability and more reuseable components to cut down on redundant code.~~ 
+COMPLETED: ~~Currently refactoring for better readability and adding more reuseable components to cut down on redundant code.~~ 
 
 This website is an Elder Scrolls Name Generator which creates lore accurate names for each of the playable races from the Elder Scrolls games
 # Getting Started with Create React App
