@@ -1,79 +1,51 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import breton from "../elderScrollsPhotos/Breton.png"
-import Radio from "../Components/Radio";
-import {getRandom, getRandomF,} from "../arrayHold/BretonNams";
+import CharacterNameGenerator from "../Components/CharacterNameGenerator";
 
 
 function Breton(props) {
-    const [gender, setGender] = useState("neutral");
-    function handleRadioChange(newGender) {
-        setGender(newGender);
-    }
+    const maleNames = [
+        "Achille", "Adeber", "Aelwin", "Agrane", "Agrard", "Agrastyr", "Agristair", "Agristyr", "Agrore", "Agroryan", "Agryctor", "Agryn", "Agrynak", "Agryrick", "Agryval", "Agrywyr", "Ainethach", "Alabane", "Alabard", "Alabastyr", "Alabistair", "Alabistyr", "Alabore", "Alaboryan", "Alabyctor", "Alabyn", "Alabynak", "Alabyrick", "Alabyval", "Alabywyr", "Alain", "Alberic", "Aleron", "Alix", "Alodie", "Amaund", "Ambroise", "Amiable", "Ancus", "Andane", "Andard", "Andastyr", "Andistair", "Andistyr", "Andore", "Andoryan", "Andre", "Andyctor", "Andyn", "Andynak", "Andyrick", "Andyval", "Andywyr", "Antoine", "Anton", "Arnand", "Arniel", "Astav", "Astien", "Banning", "Baragon", "Barnand", "Barthel", "Baurion", "Bedane", "Bedard", "Bedastyr", "Bedistair", "Bedistyr", "Bedore", "Bedoryan", "Bedyctor", "Bedyn", "Bedynak", "Bedyrick", "Bedyval", "Bedywyr", "Belchimac", "Belethor", "Bendt", "Beran", "Bereditte", "Birard", "Blaise", "Bradon", "Braig", "Brandish", "Brucetus", "Cedran", "Celann", "Christophe", "Ciel", "Cirges", "Claude", "Clinton", "Colin", "Corrick", "Cosnach", "Cynric", "Dalan", "Damian", "Danders", "Daric", "Davide", "Debentien", "Degaine", "Delacourt", "Delvin", "Detritus", "Didier", "Dilborn", "Donnel", "Dorian", "Dryston", "Duach", "Dunane", "Dunard", "Dunastyr", "Dunistair", "Dunistyr", "Dunore", "Dunoryan", "Dunyctor", "Dunyn", "Dunynak", "Dunyrick", "Dunyval", "Dunywyr", "Edgar", "Edwane", "Edward", "Edwastyr", "Edwistair", "Edwistyr", "Edwore", "Edworyan", "Edwyctor", "Edwyn", "Edwynak", "Edwyrick", "Edwyval", "Edwywyr", "Elbert", "Eltrys", "Emmanuel", "Enmon", "Ennoc", "Erj", "Ernand", "Ernard", "Ernest", "Esmond", "Etienne", "Eugal", "Faric", "Fenas", "Ferarilie", "Ferrum", "Floyd", "Francois", "Frizkav", "Frostien", "Gaban", "Gan", "Garvey", "Gaspar", "Gauldur", "Geon", "Geor", "Gepard", "Gerard", "Giraud", "Glover", "Gondane", "Gondard", "Gondastyr", "Gondistair", "Gondistyr", "Gondore", "Gondoryan", "Gondyctor", "Gondyn", "Gondynak", "Gondyrick", "Gondyval", "Gondywyr", "Grantham", "Gregory", "Hamelyn", "Hannibal", "Haskill", "Hastrel", "Hathrasil", "Herluin", "Idhdean", "Imedhnain", "Inwold", "Irbran", "Istirus", "Jadier", "Jakben", "Jauffre", "Jean-", "Jeanciele", "Jerian", "Jhared", "Jim", "Jocien", "Joncis", "Jouane", "Juillen", "Kastus", "Krag", "Lanie", "Lazare", "Lewin", "Listien", "Louis", "Madanach", "Malkoran", "Manis", "Marc", "Marcel", "Mathieu", "Matthias", "Maurice", "Mebestien", "Merard", "Mercer", "Merthierry", "Mordane", "Mordard", "Mordastyr", "Mordistair", "Mordistyr", "Mordore", "Mordoryan", "Mordyctor", "Mordyn", "Mordynak", "Mordyrick", "Mordyval", "Mordywyr", "Moric", "Myn", "Nepos", "Noleon", "Norbert", "Octieve", "Odvan", "Ogier", "Omluag", "Ormax", "Orrent", "Paur", "Perane", "Perard", "Perastyr", "Perien", "Peristair", "Peristyr", "Perore", "Peroryan", "Perth", "Peryctor", "Peryn", "Perynak", "Peryrick", "Peryval", "Perywyr", "Phane", "Philip", "Phinis", "Pierre", "Rahd", "Relien", "Renald", "Rerlas", "Reynald", "Roberto", "Rodane", "Rodard", "Rodastyr", "Roderic", "Rodistair", "Rodistyr", "Rodore", "Rodoryan", "Rodyctor", "Rodyn", "Rodynak", "Rodyrick", "Rodyval", "Rodywyr", "Roland", "Rondach", "Rowley", "Ruran", "Salomon", "Sam", "Samuel", "Sebastian", "Simine", "Socucius", "Staubin", "Stromm", "Theodane", "Theodard", "Theodastyr", "Theodistair", "Theodistyr", "Theodore", "Theodoryan", "Theodyctor", "Theodyn", "Theodynak", "Theodyrick", "Theodyval", "Theodywyr", "Theranis", "Thetrard", "Thomas", "Thorley", "Timothee", "Traelius", "Tristane", "Tristard", "Tristastyr", "Trististair", "Trististyr", "Tristore", "Tristoryan", "Tristyctor", "Tristyn", "Tristynak", "Tristyrick", "Tristyval", "Tristywyr", "Tuthul", "Tynan", "Ulrich", "Uraccen", "Uthane", "Uthard", "Uthastyr", "Uthistair", "Uthistyr", "Uthore", "Uthoryan", "Uthyctor", "Uthyn", "Uthynak", "Uthyrick", "Uthyval", "Uthywyr", "Varnis", "Verick", "Vicente", "Vincent", "Weylin", "Willem", "Ylbert"
+    
+    ]
+    const femaleNames = [
+        "Abelle", "Aditte", "Adrienne", "Ales", "Alyssa", "Ama", "Amarie", "Angeline", "Annabelle", "Antoinetta", "Anya", "Arbene", "Arielle", "Asciene", "Aurane", "Aurnie", "Babette", "Barbabyth", "Barbanna", "Barbara", "Barbausa", "Barbayne", "Barbolda", "Barbona", "Barborya", "Barbyn", "Barbyna", "Barbyrrya", "Barbyssa", "Barbyvyra", "Beatrice", "Belene", "Belladabyth", "Belladanna", "Belladara", "Belladausa", "Belladayne", "Belladolda", "Belladona", "Belladorya", "Belladyn", "Belladyna", "Belladyrrya", "Belladyssa", "Belladyvyra", "Bernadette", "Bernice", "Biene", "Blanche", "Bothela", "Bovkinna", "Cairine", "Callia", "Candice", "Carcette", "Carolabyth", "Carolanna", "Carolara", "Carolausa", "Carolayne", "Caroline", "Carololda", "Carolona", "Carolorya", "Carolyn", "Carolyna", "Carolyrrya", "Carolyssa", "Carolyvyra", "Chana", "Chrystabyth", "Chrystanna", "Chrystara", "Chrystausa", "Chrystayne", "Chrystolda", "Chrystona", "Chrystorya", "Chrystyn", "Chrystyna", "Chrystyrrya", "Chrystyssa", "Chrystyvyra", "Cienne", "Claudette", "Colette", "Dabienne", "Daighre", "Darene", "Delphine", "Derelle", "Edre", "Edwinna", "Elabyth", "Elanna", "Elara", "Elausa", "Elayne", "Elisa", "Elolda", "Elona", "Elorya", "Elyn", "Elyna", "Elyrrya", "Elyssa", "Elyvyra", "Elyzabyth", "Elyzanna", "Elyzara", "Elyzausa", "Elyzayne", "Elyzolda", "Elyzona", "Elyzorya", "Elyzyn", "Elyzyna", "Elyzyrrya", "Elyzyssa", "Elyzyvyra", "Emusette", "Eola", "Erith", "Erline", "Estelle", "Evelabyth", "Evelanna", "Evelara", "Evelausa", "Evelayne", "Evelolda", "Evelona", "Evelorya", "Evelyn", "Evelyna", "Evelyrrya", "Evelyssa", "Evelyvyra", "Fasele", "Fasile", "Fianna", "Francine", "Frelene", "Gulitte", "Gwynabyth", "Gwynanna", "Gwynara", "Gwynausa", "Gwynayne", "Gwynolda", "Gwynona", "Gwynorya", "Gwynyn", "Gwynyna", "Gwynyrrya", "Gwynyssa", "Gwynyvyra", "Helviane", "Heniele", "Irene", "Isabeau", "Isabelle", "Janand", "Jeanne", "Jeberilie", "Jolie", "Joslin", "Julienne", "Kaie", "Laelette", "Leles", "Lielle", "Lirielle", "Lisette", "Luciana", "Lysabyth", "Lysanna", "Lysara", "Lysausa", "Lysayne", "Lysolda", "Lysona", "Lysorya", "Lysyn", "Lysyna", "Lysyrrya", "Lysyssa", "Lysyvyra", "Mabrelle", "Madena", "Malielle", "Maline", "Maranique", "Marelle", "Marguerite", "Marielle", "Mariette", "Marthe", "Masalinie", "Matilde", "Maurrie", "Melie", "Melisande", "Mena", "Michel", "Milie", "Mirabelle", "Mitanne", "Modhna", "Morgabyth", "Morganna", "Morgara", "Morgausa", "Morgayne", "Morgolda", "Morgona", "Morgorya", "Morgyn", "Morgyna", "Morgyrrya", "Morgyssa", "Morgyvyra", "Muiri", "Muriel", "Nana", "Nanette", "Phebe", "Pierlette", "Piernette", "Raelynn", "Relie", "Rhiada", "Rianciene", "Rochelle", "Ronerelie", "Roxanne", "Roxy", "Sabine", "Senna", "Sorine", "Sosia", "Surane", "Sybille", "Synette", "Uaile", "Ursanne", "Vannabyth", "Vannanna", "Vannara", "Vannausa", "Vannayne", "Vannolda", "Vannona", "Vannorya", "Vannyn", "Vannyna", "Vannyrrya", "Vannyssa", "Vannyvyra", "Vienne", "Virene", "Vivienne", "Voada", "Vyctabyth", "Vyctanna", "Vyctara", "Vyctausa", "Vyctayne", "Vyctolda", "Vyctona", "Vyctorya", "Vyctyn", "Vyctyna", "Vyctyrrya", "Vyctyssa", "Vyctyvyra", "Ysabyth", "Ysanna", "Ysara", "Ysausa", "Ysayne", "Ysolda", "Ysona", "Ysorya", "Ysyn", "Ysyna", "Ysyrrya", "Ysyssa", "Ysyvyra", "Yvara", "Zoe"
+    
+    ]
+    
+    const lastNames = [
+        "Acques", "Admand", "Adrard", "Adrognese", "Aethelred", "Afranius", "Alouette", "Amedee", "Ancois", "Andre", "Aric", "Arne", "Arthe", "Ashcroft", "Ashfield", "Ashford", "Ashham", "Ashhart", "Ashhouse", "Ashing", "Ashsley", "Ashsly", "Ashsmith", "Ashston", "Ashton", "Ashwing", "Auline", "Aumilie", "Aurelie", "Aurilie", "Aurmine", "Beanique", "Beauchamp", "Beaufort", "Belette", "Bellamont", "Beluelle", "Berene", "Bielle", "Bienne", "Bierles", "Bincal", "Birian", "Blakeley", "Bracques", "Branck", "Brigette", "Broles", "Brolus", "Brutya", "Buckingcroft", "Buckingfield", "Buckingford", "Buckingham", "Buckinghart", "Buckinghouse", "Buckinging", "Buckingsley", "Buckingsly", "Buckingsmith", "Buckingston", "Buckington", "Buckingwing", "Canne", "Caria", "Caristiana", "Channitte", "Charascel", "Charien", "Chriditte", "Cienne", "Coppercroft", "Copperfield", "Copperford", "Copperham", "Copperhart", "Copperhouse", "Coppering", "Coppersley", "Coppersly", "Coppersmith", "Copperston", "Copperton", "Copperwing", "Corgine", "Dalomax", "Denile", "Desele", "Diel", "Dolbanitte", "Don", "Draconis", "Dufont", "Eardwulf", "Elbert", "Ence", "Endell", "Endre", "Ephine", "Erelie", "Ergalla", "Ernarde", "Ervine", "Fanis", "Fanriene", "Farr", "Festinius", "Fralinie", "Franc", "Frasoric", "Frenck", "Frernis", "Frey", "Gaercroft", "Gaerfield", "Gaerford", "Gaerham", "Gaerhart", "Gaerhouse", "Gaering", "Gaersley", "Gaersly", "Gaersmith", "Gaerston", "Gaerton", "Gaerwing", "Galena", "Galien", "Gane", "Gemain", "Gemane", "Gene", "Genis", "Geonette", "Geontene", "Georick", "Gernand", "Gernis", "Gestor", "Geves", "Gilelle", "Greencroft", "Greenfield", "Greenford", "Greenham", "Greenhart", "Greenhouse", "Greening", "Greensley", "Greensly", "Greensmith", "Greenston", "Greenton", "Greenwing", "Guevenne", "Gulitte", "Hastien", "Hawkcroft", "Hawkfield", "Hawkford", "Hawkham", "Hawkhart", "Hawkhouse", "Hawking", "Hawksley", "Hawksly", "Hawksmith", "Hawkston", "Hawkton", "Hawkwing", "Hearthcroft", "Hearthfield", "Hearthford", "Hearthham", "Hearthhart", "Hearthhouse", "Hearthing", "Hearthsley", "Hearthsly", "Hearthsmith", "Hearthston", "Hearthton", "Hearthwing", "Herrick", "Ildene", "Imbel", "Jastal", "Jeanard", "Jeannie", "Jeline", "Jend", "Jenseric", "Jes", "Jodoin", "Jolvanne", "Jondrelle", "Julalanie", "Jurard", "Kingcroft", "Kingfield", "Kingford", "Kingham", "Kinghart", "Kinghouse", "Kinging", "Kingsley", "Kingsly", "Kingsmith", "Kingston", "Kington", "Kingwing", "Kirbatha", "La", "Labouche", "Laelippe", "Laul", "Leland", "Lelles", "Lemonds", "Lencolia", "Leoriane", "Letrush", "Limax", "Liric", "Litte", "Lort", "Lothaire", "Luseph", "Maborel", "Macile", "Madach", "Magius", "Malene", "Manette", "Manis", "Mannick", "Marane", "Marence", "Maric", "Marie", "Marquardt", "Masolaude", "Masoriane", "Mastercroft", "Masterfield", "Masterford", "Masterham", "Masterhart", "Masterhouse", "Mastering", "Mastersley", "Mastersly", "Mastersmith", "Masterston", "Masterton", "Masterwing", "Mastien", "Maston", "Matreinace", "Maul", "Maulinie", "Maurard", "Melie", "Mene", "Merchad", "Merian", "Meric", "Merowald", "Metrick", "Milielle", "Milvan", "Mon", "Mona", "Monet", "Moniel", "Montrose", "Moorcroft", "Moorfield", "Moorford", "Moorham", "Moorhart", "Moorhouse", "Mooring", "Moorsley", "Moorsly", "Moorsmith", "Moorston", "Moorton", "Moorwing", "Mornardl", "Morrard", "Motierre", "Nathans", "Nermarc", "Nestal", "Nin", "Northwode", "Nytte", "Oges", "Onis", "Ottus", "Palielle", "Panoit", "Peneles", "Perrick", "Petit", "Phiencel", "Philulanie", "Phirrienele", "Rane", "Rarnis", "Renault", "Renoit", "Retene", "Rielle", "Rirne", "Riscel", "Rolaine", "Rolston", "Rostorard", "Rouche", "San", "Sele", "Selone", "Sette", "Sidrey", "Sintieve", "Stedrine", "Stegine", "Stentor", "Stieve", "Stroud", "Sylbenitte", "Tailas", "Thierry", "Tilwald", "Traven", "Tussaud", "Tyne", "Valtieri", "Vanne", "Vautrine", "Velain", "Vette", "Viernis", "Viralaine", "Virane", "Virmaulese", "Wickcroft", "Wickfield", "Wickford", "Wickham", "Wickhart", "Wickhouse", "Wicking", "Wicksley", "Wicksly", "Wicksmith", "Wickston", "Wickton", "Wickwing", "Wirich", "Woodcroft", "Woodfield", "Woodford", "Woodham", "Woodhart", "Woodhouse", "Wooding", "Woodsley", "Woodsly", "Woodsmith", "Woodston", "Woodton", "Woodwing", "Yeomcroft", "Yeomfield", "Yeomford", "Yeomham", "Yeomhart", "Yeomhouse", "Yeoming", "Yeomsley", "Yeomsly", "Yeomsmith", "Yeomston", "Yeomton", "Yeomwing", "Ysciele", "Yvienne"
+    
+    ]
+    
 
-    const [names,setAltName]=useState([]);
-    let handleClick
-    if(gender === "Male")
-    {
-        handleClick = () => {
-            setAltName(getRandom())
-
-        }
-    }
-    else if (gender ==="Female"){
-        handleClick = () => {
-            setAltName(getRandomF())
-        }
-    }
-
-    useEffect(() => {
-        window.scroll({ top: document.body.scrollHeight, behavior: 'smooth' });
-    }, [names]);
-
+ 
     return (
-        <div >
-            <div className = "flex w-full relative z-0 justify-center lg:w-auto">
-                <div className = "flex w-auto display:flex w-auto h-auto pt-16 hidden lg:block">
-                    <img className = "object-cover shadow-md shadow-gray-500 rounded-lg object-fill
-                     transform transition duration-500 hover:scale-105 border-stone-700 border-double border-8" src = {breton}/>
-                </div>
-                <div className= "text-[white] font-Rubik
-            self-center h-auto lg:pl-16 w-full lg:w-1/2 mt-16 lg:mt-0 p-4">
-                    <h1 className= "justify-center text-3xl md:text-3xl lg:text-4xl font-bold text-lg w-3/4 text-[#d7b15b]"> Breton Character Name Generator</h1>
-                    <p className = "pt-6  text-base md:text-lg lg:text-lg" > Bretons are a race of both human and elven ancestry that inhabit High Rock.
+        <div>
+          <div className="flex w-full relative z-0 justify-center lg:w-auto">
+            <div className="flex w-auto display:flex w-auto h-auto pt-16 hidden lg:block">
+              <img
+                className="object-cover shadow-md shadow-gray-500 rounded-lg object-fill
+                         transform transition duration-500 hover:scale-105 border-stone-700 border-double border-8"
+                src={breton}
+                alt="breton"
+              />
+            </div>
+            <div
+              className="text-[white] font-Rubik
+                self-center h-auto lg:pl-16 w-full lg:w-1/2 mt-16 lg:mt-0 p-4"
+            >
+              <h1 className="justify-center text-3xl md:text-3xl lg:text-4xl font-bold text-lg w-3/4 text-[#d7b15b]"> Breton Character Name Generator</h1>
+              <p className="pt-6  text-base md:text-lg lg:text-lg"> Bretons are a race of both human and elven ancestry that inhabit High Rock.
                         If Bretons are humans or elves is a topic of debate, with most people believing that they are the former. High Rock is fractious and divided politically, which is seemingly
                         encouraged by the layout of the land itself. Warfare between kingdoms accounts for much of Breton history. Despite this, Bretons across the province share many facets of culture,
                         including language, bardic traditions, and heroic tales.</p>
-                </div>
             </div>
-            <div className= "flex w-full relative z-0 justify-center lg:w-auto flex-wrap">
-                <div className = "grid max-h-24 w-auto relative z-0 justify-center lg:w-auto mt-4">
-                    <button onClick={handleClick} className="bg-[#d7b15b] text-[#1c181b] font-bold py-2 px-4
-                        rounded font-Rubik lg:w-56 h-14 w-full hover:bg-[#ded2ae] transform transition duration-500 hover:scale-105 "> Generate names </button>
-                    <div className="mt-4">
-                        <Radio onChange = {handleRadioChange}/>
-                    </div>
-                </div>
-
-                <div className="text-[white] font-Rubik
-            self-center w-full lg:pl-16 lg:w-1/2 mt-4 lg:mt-0 lg:p-4">
-                    <div className = "justify-center md:text-3xl lg:text-2xl font-bold text-lg text-[#] w-auto pl-4 lg:pl-0">{names.map((name,i)=>(<div className="mb-2" key={i}>{name}</div>))}</div>
-
-
-
-
-                </div>
-
-            </div>
-
-
-
-
-
+          </div>
+          <CharacterNameGenerator maleNames={maleNames} femaleNames={femaleNames} lastNames={lastNames} />
         </div>
+      );
+    }
 
-
-    );
-
-}
 
 export default Breton;
