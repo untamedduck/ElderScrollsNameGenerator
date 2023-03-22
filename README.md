@@ -1,4 +1,4 @@
-# Elder Scrolls Name Generator#
+## Elder Scrolls Name Generator
 
 This website is an Elder Scrolls Name Generator which creates lore accurate names for each of the playable races from the Elder Scrolls games
 
@@ -8,7 +8,8 @@ Created with ReactJS and TailwindCSS
 
 COMPLETED: ~~Currently refactoring for better readability and adding more reuseable components to cut down on redundant code.~~ 
 
-#React stuff#
+
+##React stuff
 
 
 
