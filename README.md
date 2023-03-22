@@ -9,12 +9,12 @@ Created with ReactJS and TailwindCSS
 COMPLETED: ~~Currently refactoring for better readability and adding more reuseable components to cut down on redundant code.~~ 
 
 
-##React stuff
 
 
 
 
 
+## React Stuff
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
