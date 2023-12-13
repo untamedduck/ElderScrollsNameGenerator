@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import BannerImage from "../Pictures/logo-color.png"
+import BannerImage from "../Pictures/logo-color-removebg.png"
 import{AiOutlineMenu,AiOutlineClose} from "react-icons/ai"
 import {Link} from "react-router-dom"
 
