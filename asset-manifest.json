@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/ElderScrollsNameGenerator/static/css/main.c74885cf.css",
-    "main.js": "/ElderScrollsNameGenerator/static/js/main.f1b64d1d.js",
+    "main.js": "/ElderScrollsNameGenerator/static/js/main.397e1393.js",
     "static/media/Orc.png": "/ElderScrollsNameGenerator/static/media/Orc.1286d1eb2710581d1aa0.png",
     "static/media/Cat.png": "/ElderScrollsNameGenerator/static/media/Cat.5658aac5a53354855b0b.png",
     "static/media/Argonian.png": "/ElderScrollsNameGenerator/static/media/Argonian.cbae5ae247f0f392f2c4.png",
@@ -10,15 +10,15 @@
     "static/media/Nord.png": "/ElderScrollsNameGenerator/static/media/Nord.c6925eb44629eb8773ef.png",
     "static/media/DarkElf.png": "/ElderScrollsNameGenerator/static/media/DarkElf.914735c43b1b80ab8349.png",
     "static/media/Imperial.png": "/ElderScrollsNameGenerator/static/media/Imperial.83424a8b133abb464b7f.png",
+    "static/media/logo-color-removebg.png": "/ElderScrollsNameGenerator/static/media/logo-color-removebg.b0a4cef0c679a068c4aa.png",
     "static/media/WoodElf.png": "/ElderScrollsNameGenerator/static/media/WoodElf.f6be9c739f0798178348.png",
     "static/media/Breton.png": "/ElderScrollsNameGenerator/static/media/Breton.a817ac1afac728fb0a8c.png",
-    "static/media/logo-color.png": "/ElderScrollsNameGenerator/static/media/logo-color.1512e41439a1f58b89d2.png",
     "index.html": "/ElderScrollsNameGenerator/index.html",
     "main.c74885cf.css.map": "/ElderScrollsNameGenerator/static/css/main.c74885cf.css.map",
-    "main.f1b64d1d.js.map": "/ElderScrollsNameGenerator/static/js/main.f1b64d1d.js.map"
+    "main.397e1393.js.map": "/ElderScrollsNameGenerator/static/js/main.397e1393.js.map"
   },
   "entrypoints": [
     "static/css/main.c74885cf.css",
-    "static/js/main.f1b64d1d.js"
+    "static/js/main.397e1393.js"
   ]
 }
