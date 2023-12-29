@@ -1,5 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import Radio from "./Radio";
+import { getFirestore, collection, getDoc,doc } from "firebase/firestore";
+import { db } from "../firebase"
 
 function CharacterNameGenerator(props) {
   const [gender, setGender] = useState("neutral");
@@ -11,23 +13,49 @@ function CharacterNameGenerator(props) {
     setGender(newGender);
   };
 
-  const handleClick = () => {
-    const maleNames = props.maleNames;
-    const femaleNames = props.femaleNames;
-    const lastNames = props.lastNames;
-    let generatedNames = [];
 
-    for (let i = 0; i < 5; i++) {
-      let firstName =
+  
+  const handleClick = async () => {
+    try {
+      const namesSnapshot =
         gender === "Male"
-          ? maleNames[Math.floor(Math.random() * maleNames.length)]
-          : femaleNames[Math.floor(Math.random() * femaleNames.length)];
-      let lastName = lastNames[Math.floor(Math.random() * lastNames.length)];
-      generatedNames.push(`${firstName} ${lastName}`);
+          ? await getDoc(
+              doc(db, props.series, props.race, "Names", "Male-First-Names")
+            )
+          : await getDoc(
+              doc(db,  props.series, props.race, "Names", "Female-First-Names")
+            );
+  
+      const lastNamesSnapshot = await getDoc(
+        doc(db,  props.series, props.race, "Names", "Last-Names")
+      );
+  
+      const namesData = namesSnapshot.data();
+      const lastNamesData = lastNamesSnapshot.data();
+  
+      if (namesData && lastNamesData) {
+        let generatedNames = [];
+  
+        for (let i = 0; i < 5; i++) {
+          let firstName =
+            namesData.names[
+              Math.floor(Math.random() * namesData.names.length)
+            ];
+          let lastName =
+            lastNamesData.names[
+              Math.floor(Math.random() * lastNamesData.names.length)
+            ];
+          generatedNames.push(`${firstName} ${lastName}`);
+        }
+  
+        setNames(generatedNames);
+      } 
+    } catch (error) {
+      console.error("Error fetching data:", error);
     }
-
-    setNames(generatedNames);
   };
+    
+  
 
   useEffect(() => {
     if (namesContainerRef.current) {
@@ -65,5 +93,6 @@ function CharacterNameGenerator(props) {
     </div>
   );
 }
+
 
 export default CharacterNameGenerator;
