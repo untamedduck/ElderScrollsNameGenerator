@@ -51,7 +51,12 @@ function Navbar(props) {
             <Link to="/ElderScrollsNameGenerator/" onClick={() => setNav(!nav)}>
               <li className="p-4 border-b border-gray-600"> Home </li>
             </Link>
-            <li className="p-4 border-b  invisible"> Generators </li>
+            <Link to="/LogIn" onClick={() => setNav(!nav)}>
+          <li className="p-4"> Log In </li>
+        </Link>
+        <Link to="/Profile" onClick={() => setNav(!nav)}>
+          <li className="p-4"> Profile </li>
+        </Link>
             <li className="p-4 border-b border-gray-600 invisible"> About </li>
             <li className="p-4 invisible"> Contact us </li>
           </ul>
