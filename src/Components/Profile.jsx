@@ -1,18 +1,10 @@
-// Profile.jsx
-import React, { useState, useEffect } from "react";
-import { onAuthStateChanged, signOut } from "firebase/auth";
-import { auth } from'../firebase';
+import React from "react";
+import { signOut } from "firebase/auth";
+import { useUser } from '../Components/UserContext';
+import { auth } from '../firebase';
+
 const Profile = () => {
-  const [isSignedIn, setIsSignedIn] = useState(false);
-
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setIsSignedIn(!!user);
-    });
-
-    // Clean up the subscription when the component unmounts
-    return () => unsubscribe();
-  }, []);
+  const user = useUser();
 
   const handleSignOut = async () => {
     try {
@@ -24,9 +16,9 @@ const Profile = () => {
 
   return (
     <div>
-      {isSignedIn ? (
+      {user ? (
         <div>
-          <p>Welcome, User!</p>
+          <p>Welcome, {user.email}!</p>
           <button onClick={handleSignOut}>Sign Out</button>
         </div>
       ) : (

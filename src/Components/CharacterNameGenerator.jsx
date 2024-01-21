@@ -1,11 +1,13 @@
 import React, { useState, useRef, useEffect } from "react";
 import Radio from "./Radio";
-import { getFirestore, collection, getDoc,doc } from "firebase/firestore";
-import { db } from "../firebase"
+import { getFirestore, collection, getDoc, doc, addDoc, setDoc } from "firebase/firestore";
+import { db } from "../firebase";
+import { useUser } from "./UserContext";
 
 function CharacterNameGenerator(props) {
   const [gender, setGender] = useState("neutral");
   const [names, setNames] = useState([]);
+  const user = useUser();
 
   const namesContainerRef = useRef(null);
 
@@ -13,8 +15,6 @@ function CharacterNameGenerator(props) {
     setGender(newGender);
   };
 
-
-  
   const handleClick = async () => {
     try {
       const namesSnapshot =
@@ -23,38 +23,63 @@ function CharacterNameGenerator(props) {
               doc(db, props.series, props.race, "Names", "Male-First-Names")
             )
           : await getDoc(
-              doc(db,  props.series, props.race, "Names", "Female-First-Names")
+              doc(db, props.series, props.race, "Names", "Female-First-Names")
             );
-  
+
       const lastNamesSnapshot = await getDoc(
-        doc(db,  props.series, props.race, "Names", "Last-Names")
+        doc(db, props.series, props.race, "Names", "Last-Names")
       );
-  
+
       const namesData = namesSnapshot.data();
       const lastNamesData = lastNamesSnapshot.data();
-  
+
       if (namesData && lastNamesData) {
         let generatedNames = [];
-  
+
         for (let i = 0; i < 5; i++) {
           let firstName =
-            namesData.names[
-              Math.floor(Math.random() * namesData.names.length)
-            ];
+            namesData.names[Math.floor(Math.random() * namesData.names.length)];
           let lastName =
             lastNamesData.names[
               Math.floor(Math.random() * lastNamesData.names.length)
             ];
           generatedNames.push(`${firstName} ${lastName}`);
         }
-  
+
         setNames(generatedNames);
-      } 
+      }
     } catch (error) {
       console.error("Error fetching data:", error);
     }
   };
-    
+
+  const handleNameClick = async (name) => {
+    if (user) {
+      try {
+        // Create a reference to the user's document in Firestore
+        const userDocRef = doc(db, 'users', user.uid);
+  
+        // Check if the user document exists
+        const userDocSnapshot = await getDoc(userDocRef);
+        if (!userDocSnapshot.exists()) {
+          // If not, create the user document
+          await setDoc(userDocRef, {});
+        }
+  
+        // Create a reference to the savedNames collection inside the user's document
+        const savedNamesCollectionRef = collection(userDocRef, 'savedNames');
+  
+        // Save the name to the user's profile in Firestore
+        await addDoc(savedNamesCollectionRef, { name });
+        console.log(`Name "${name}" saved to user's profile.`);
+      } catch (error) {
+        console.error("Error saving name:", error);
+      }
+    } else {
+      // Redirect the user to the login page or show a login prompt
+      console.log('User not logged in. Redirecting to login page or showing login prompt.');
+    }
+  };
   
 
   useEffect(() => {
@@ -84,7 +109,8 @@ function CharacterNameGenerator(props) {
       >
         <div className="justify-center md:text-3xl lg:text-2xl font-bold text-lg text-[#] w-auto pl-4 lg:pl-0">
           {names.map((name, i) => (
-            <div className="mb-2" key={i}>
+            <div className="mb-2" key={i}
+            onClick = {() => handleNameClick(name)}>
               {name}
             </div>
           ))}
@@ -93,6 +119,5 @@ function CharacterNameGenerator(props) {
     </div>
   );
 }
-
 
 export default CharacterNameGenerator;
