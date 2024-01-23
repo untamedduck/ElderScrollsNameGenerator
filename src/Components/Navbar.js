@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import BannerImage from "../Pictures/logo-color-removebg.png";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import { useUser } from '../Components/UserContext'; // Assuming you have a hook for user authentication status
 
 function Navbar(props) {
   const [nav, setNav] = useState(true);
+  const user = useUser(); // Get the user authentication status
 
   const handleNav = () => {
     setNav(!nav);
@@ -23,12 +25,17 @@ function Navbar(props) {
         <Link to="/ElderScrollsNameGenerator/">
           <li className="p-4"> Home </li>
         </Link>
-        <Link to="/LogIn">
-          <li className="p-4"> Log In </li>
-        </Link>
-        <Link to="/Profile">
-          <li className="p-4"> Profile </li>
-        </Link>
+        {user ? (
+          // If user is logged in, show "Profile"
+          <Link to="/Profile">
+            <li className="p-4"> Profile </li>
+          </Link>
+        ) : (
+          // If user is not logged in, show "Login"
+          <Link to="/LogIn">
+            <li className="p-4"> Login </li>
+          </Link>
+        )}
         <li className="p-4 invisible"> About </li>
         <li className="p-4 invisible"> Contact us </li>
       </ul>
@@ -51,12 +58,15 @@ function Navbar(props) {
             <Link to="/ElderScrollsNameGenerator/" onClick={() => setNav(!nav)}>
               <li className="p-4 border-b border-gray-600"> Home </li>
             </Link>
-            <Link to="/LogIn" onClick={() => setNav(!nav)}>
-          <li className="p-4"> Log In </li>
-        </Link>
-        <Link to="/Profile" onClick={() => setNav(!nav)}>
-          <li className="p-4"> Profile </li>
-        </Link>
+            {user ? (
+              <Link to="/Profile" onClick={() => setNav(!nav)}>
+                <li className="p-4"> Profile </li>
+              </Link>
+            ) : (
+              <Link to="/LogIn" onClick={() => setNav(!nav)}>
+                <li className="p-4"> Login </li>
+              </Link>
+            )}
             <li className="p-4 border-b border-gray-600 invisible"> About </li>
             <li className="p-4 invisible"> Contact us </li>
           </ul>

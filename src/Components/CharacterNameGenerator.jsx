@@ -109,9 +109,16 @@ function CharacterNameGenerator(props) {
       >
         <div className="justify-center md:text-3xl lg:text-2xl font-bold text-lg text-[#] w-auto pl-4 lg:pl-0">
           {names.map((name, i) => (
-            <div className="mb-2" key={i}
-            onClick = {() => handleNameClick(name)}>
-              {name}
+            <div className="mb-2 flex items-center" key={i}>
+              <div className="mr-2">
+                {name}
+              </div>
+              <button
+                className="text-base bg-[#d7b15b] text-black px-1 py-1 rounded"
+                onClick={() => handleNameClick(name)}
+              >
+                Save
+              </button>
             </div>
           ))}
         </div>
