@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import Radio from "./Radio";
-import { getFirestore, collection, getDoc, doc, addDoc, setDoc } from "firebase/firestore";
+import { getFirestore, collection, getDoc, doc, addDoc, setDoc, updateDoc, arrayUnion } from "firebase/firestore";
 import { db } from "../firebase";
 import { useUser } from "./UserContext";
 
@@ -69,8 +69,14 @@ function CharacterNameGenerator(props) {
         // Create a reference to the savedNames collection inside the user's document
         const savedNamesCollectionRef = collection(userDocRef, 'savedNames');
   
-        // Save the name to the user's profile in Firestore
-        await addDoc(savedNamesCollectionRef, { name });
+        // Save the name to the user's profile in Firestore with series, race, gender details
+        await addDoc(savedNamesCollectionRef, {
+          name: name,
+          series: props.series,
+          race: props.race,
+          gender: gender // assuming gender is either 'Male' or 'Female'
+        });
+  
         console.log(`Name "${name}" saved to user's profile.`);
       } catch (error) {
         console.error("Error saving name:", error);
@@ -80,6 +86,9 @@ function CharacterNameGenerator(props) {
       console.log('User not logged in. Redirecting to login page or showing login prompt.');
     }
   };
+  
+  
+  
   
 
   useEffect(() => {
