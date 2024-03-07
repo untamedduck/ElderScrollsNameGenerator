@@ -6,8 +6,6 @@ Deployed at - https://untamedduck.github.io/ElderScrollsNameGenerator/
 
 Created with ReactJS and TailwindCSS
 
-COMPLETED: ~~Currently refactoring for better readability and adding more reuseable components to cut down on redundant code.~~ 
-
 
 
 
