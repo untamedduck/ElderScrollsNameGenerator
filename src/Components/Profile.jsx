@@ -6,22 +6,15 @@ import { collection, getDocs, doc, deleteDoc, query, where } from 'firebase/fire
 
 const Profile = () => {
   const user = useUser();
-  const [savedNames, setSavedNames] = useState([]);
+  const [savedNames, setSavedNames] = useState({});
+  const [expandedSections, setExpandedSections] = useState({});
 
-  // Move fetchSavedNames function outside the useEffect
   const fetchSavedNames = async () => {
     if (user) {
       try {
-        // Create a reference to the user's document in Firestore
         const userDocRef = doc(db, 'users', user.uid);
-
-        // Create a reference to the savedNames collection inside the user's document
         const savedNamesCollectionRef = collection(userDocRef, 'savedNames');
-
-        // Fetch all documents from the savedNames collection
         const querySnapshot = await getDocs(savedNamesCollectionRef);
-
-        // Organize names into a nested structure (grouped by series, race, gender)
         const groupedNames = {};
 
         querySnapshot.docs.forEach(doc => {
@@ -31,19 +24,15 @@ const Profile = () => {
           if (!groupedNames[series]) {
             groupedNames[series] = {};
           }
-
           if (!groupedNames[series][race]) {
             groupedNames[series][race] = {};
           }
-
           if (!groupedNames[series][race][gender]) {
             groupedNames[series][race][gender] = [];
           }
-
           groupedNames[series][race][gender].push(name);
         });
 
-        // Set the savedNames state with the grouped data
         setSavedNames(groupedNames);
       } catch (error) {
         console.error("Error fetching saved names:", error);
@@ -52,7 +41,6 @@ const Profile = () => {
   };
 
   useEffect(() => {
-    // Call the function to fetch saved names
     fetchSavedNames();
   }, [user]);
 
@@ -67,25 +55,17 @@ const Profile = () => {
   const handleDeleteClick = async (series, race, gender, name) => {
     if (user) {
       try {
-        // Create a reference to the user's document in Firestore
         const userDocRef = doc(db, 'users', user.uid);
-  
-        // Create a reference to the savedNames collection inside the user's document
         const savedNamesCollectionRef = collection(userDocRef, 'savedNames');
-  
-        // Use where to find the specific document with matching fields
         const querySnapshot = await getDocs(
           query(savedNamesCollectionRef, where('series', '==', series), where('race', '==', race), where('gender', '==', gender), where('name', '==', name))
         );
-  
-        // Assuming there's only one document matching the query, delete it
+
         if (querySnapshot.size === 1) {
           const docToDeleteRef = querySnapshot.docs[0].ref;
           await deleteDoc(docToDeleteRef);
-  
+
           console.log(`Name "${name}" deleted from user's profile.`);
-  
-          // After deletion, fetch and update the names to reflect the changes
           fetchSavedNames();
         } else {
           console.error(`Error: Found ${querySnapshot.size} matching documents. Unable to delete.`);
@@ -97,41 +77,65 @@ const Profile = () => {
       console.log('User not logged in. Redirecting to login page or showing login prompt.');
     }
   };
-  
-  
+
+  const toggleSection = (sectionPath) => {
+    setExpandedSections(prev => ({
+      ...prev,
+      [sectionPath]: !prev[sectionPath]
+    }));
+  };
+
+  const renderSection = (data, path) => (
+    <div>
+      {Object.entries(data).map(([key, value]) => {
+        const newPath = path ? `${path}.${key}` : key;
+        const isExpanded = !!expandedSections[newPath];
+        const isLeaf = typeof value === 'string' || Array.isArray(value);
+        return (
+          <div key={newPath}>
+            <div onClick={() => toggleSection(newPath)} className="cursor-pointer text-lg text-[#d7b15b]">
+              {isExpanded ? '▼' : '▶'} {key}
+            </div>
+            {isExpanded && !isLeaf && (
+              <div className="ml-4">
+                {renderSection(value, newPath)}
+              </div>
+            )}
+            {isExpanded && isLeaf && (
+              <ul className="ml-4">
+                {Array.isArray(value) ? value.map((name, index) => (
+                  <li key={index} className="text-white">
+                    {name}
+                    <button onClick={() => handleDeleteClick(...newPath.split('.'), name)} className="text-sm ml-2 bg-[#d7b15b] text-black">
+                      Delete Name
+                    </button>
+                  </li>
+                )) : (
+                  <li className="text-white">{value}</li>
+                )}
+              </ul>
+            )}
+          </div>
+        );
+      })}
+    </div>
+  );
 
   return (
     <div>
       {user ? (
         <div>
-          <p className="text-2xl text-white" >Welcome, {user.email}!</p>
-          <button className="text-2xl bg-[#d7b15b] text-black"  onClick={handleSignOut}>Sign Out</button>
-          <h2>Saved Names:</h2>
-          {Object.entries(savedNames).map(([series, seriesData]) => (
-            <div key={series}>
-              <h3 className="text-2xl text-[#d7b15b]">{series}</h3>
-              {Object.entries(seriesData).map(([race, raceData]) => (
-                <div key={race}>
-                  <h4 className="text-xl text-[#d7b15b]">{race}</h4>
-                  {Object.entries(raceData).map(([gender, names]) => (
-                    <div key={gender}>
-                      <p className="text-lg text-[#d7b15b]">{gender}</p>
-                      <ul>
-                        {names.map((name, index) => (
-                          <li key={index} className="text-lg text-white">
-                            {name}
-                            <button onClick={() => handleDeleteClick(series, race, gender, name)} className=" text-sm ml-2 bg-[#d7b15b] text-black">
-                              Delete Name
-                            </button>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  ))}
-                </div>
-              ))}
-            </div>
-          ))}
+          <p className="text-2xl text-white">Welcome, {user.email}!</p>
+          
+
+          <h2 className="text-xl text-white">Saved Names:</h2>
+          {renderSection(savedNames)}
+          <button 
+  className="text-xl bg-[#d7b15b] text-white px-4 py-2 border border-transparent rounded-md hover:bg-[#b6934d] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#d7b15b]"
+  onClick={handleSignOut}
+>
+  Sign Out
+</button>
         </div>
       ) : (
         <p>Not signed in</p>
